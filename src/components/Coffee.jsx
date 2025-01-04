@@ -6,6 +6,8 @@ const Coffee = ({ coffee, loadedCoffees, setLoadedCoffees }) => {
 
     const { _id, name, chef, taste, photo } = coffee;
 
+    
+
     const handleDelete = _id => {
         Swal.fire({
             title: "Are you sure?",
