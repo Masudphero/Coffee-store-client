@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
 
@@ -12,7 +13,26 @@ const SignIn = () => {
       console.log(email, password)
       signInUser(email,password)
       .then(result=>{
-        console.log(result.user)
+
+        console.log(result.user);
+
+        // update last login time
+        const lastSignInTime=result?.user?.metadata?.lastSignInTime;
+        const loginInfo={email,lastSignInTime};
+        fetch(`https://masud-eta.vercel.app/users`,{
+            method:'PATCH',
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(loginInfo)
+        })
+        .then(res=> res.json())
+        .then(data=>{
+            console.log("sign in info updated in db" ,data)
+        })
+      })
+      .catch(error=>{
+        console.log(error)
       })
 
     }
@@ -46,6 +66,7 @@ const SignIn = () => {
                     <div className="form-control mt-6">
                         <button type="submit" className="btn btn-primary">Sign In</button>
                     </div>
+                    <p>New to coffee drinker: <Link to="/signup" className='font-bold text-blue-600'>Sign Up</Link></p>
                 </form>
             </div>
         </div>

@@ -19,7 +19,7 @@ const navigate=useNavigate()
         console.log(newCoffee)
 
         // send data to the server and database
-        fetch('http://localhost:5000/coffee', {
+        fetch('https://masud-eta.vercel.app/coffee', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

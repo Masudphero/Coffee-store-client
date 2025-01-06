@@ -18,7 +18,7 @@ const Users = () => {
           }).then((result) => {
             if (result.isConfirmed) {
            
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://masud-eta.vercel.app/users/${id}`, {
                 method:"DELETE"
             })
            
@@ -57,6 +57,8 @@ const Users = () => {
         <th>Name</th>
         <th>Email</th>
         <th>Created At</th>
+        <th>Last Login At</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -67,6 +69,7 @@ const Users = () => {
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.createdAt}</td>
+            <td>{user.lastSignInTime}</td>
             <td>
                 <button className='btn'>E</button>
                 <button onClick={()=>handelUserDelete(user._id)} className='btn'>X</button>

@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/coffee')
+        loader: () => fetch('https://masud-eta.vercel.app/coffee')
       },
       {
         path: 'addCoffee',
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       {
         path: 'updateCoffee/:id',
         element: <UpdateCoffee></UpdateCoffee>,
-        loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
+        loader: ({ params }) => fetch(`https://masud-eta.vercel.app/coffee/${params.id}`)
       },
       {
         path: "signin",
@@ -44,9 +44,9 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>
       },
       {
-        path:"users",
-        element:<Users></Users>,
-        loader:()=>fetch("http://localhost:5000/users")
+        path: "users",
+        element: <Users></Users>,
+        loader: () => fetch("https://masud-eta.vercel.app/users")
       }
     ]
   },

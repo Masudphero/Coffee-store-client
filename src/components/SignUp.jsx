@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import { Link } from 'react-router-dom';
+import photo from "../assets/hhhhhh.jpeg"
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
@@ -21,7 +23,7 @@ const SignUp = () => {
             const newUser={name, email,createdAt}
         
             //  save new user info to the database
-            fetch("http://localhost:5000/users",{
+            fetch("https://masud-eta.vercel.app/users",{
                 method:"POST",
                 headers:{
                     "content-type":"application/json"
@@ -46,16 +48,18 @@ const SignUp = () => {
     };
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Sign Up now!</h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
-                    </p>
-                </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div  style={{
+    
+            height:"50rem",
+            backgroundImage:`url(${photo})`,
+            backgroundSize:"contain",
+            backgroundRepeat:"no-repeat",
+            
+         }} className="hero justify-center container mx-auto items-center bg-base-200">
+            <div >
+                <div>
+                 <div>
+                <div className="card m-auto mt-7  lg:w-96 w-full max-w-sm shrink-0 shadow-2xl">
                     <form onSubmit={handleSignUp} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -79,12 +83,16 @@ const SignUp = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-primary">Sign Up</button>
+                            <button type="submit" className="btn btn-primary">Sign Up or egister</button>
                         </div>
+                        <p>coffee test: <Link to="/signin" className='font-bold text-blue-500'>Sign In</Link></p>
                     </form>
                 </div>
             </div>
         </div>
+                 </div>
+                </div>
+                
     );
 };
 
